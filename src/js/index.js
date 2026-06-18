@@ -6,7 +6,7 @@ const btnSearch = document.getElementById('btn-search');
 const profileResults = document.querySelector('.profile-results');
 
 
-btnSearch.addEventListener('click', async () => {
+async function getUserProfile(){
     const userName = inputSearch.value;
     if (!userName) {
         alert('Por favor, digite um nome de usuário do GitHub para pesquisar.');
@@ -24,4 +24,11 @@ btnSearch.addEventListener('click', async () => {
             alert('Ocorreu um erro ao buscar o usuário. Por favor, tente novamente mais tarde.');
             profileResults.innerHTML = "";
         }
-})
+}
+ btnSearch.addEventListener('click', getUserProfile);
+
+inputSearch.addEventListener('keyup', (event) => {
+    if (event.key === 'Enter') {
+        getUserProfile();
+    }
+});
